@@ -1,10 +1,10 @@
 from django.db import models
-
+from django.utils import timezone
 
 class Agency(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = 'agency'
@@ -20,7 +20,7 @@ class Employee(models.Model):
     ethnicity = models.ForeignKey('Ethnicity', models.DO_NOTHING)
     monthly_salary = models.DecimalField(max_digits=16, decimal_places=2)
     md5 = models.CharField(unique=True, max_length=50)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = 'employee'
@@ -29,7 +29,7 @@ class Employee(models.Model):
 class Ethnicity(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = 'ethnicity'
@@ -38,7 +38,7 @@ class Ethnicity(models.Model):
 class Gender(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = 'gender'
@@ -47,7 +47,7 @@ class Gender(models.Model):
 class Profession(models.Model):
     id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=50)
-    created_at = models.DateTimeField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     class Meta:
         db_table = 'profession'
